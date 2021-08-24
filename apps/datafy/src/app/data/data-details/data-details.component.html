@@ -1,0 +1,43 @@
+<mat-card>
+  <mat-card-title class="text-center">
+    <span *ngIf="currentData.id; else elseBlock"> Edit {{ dataTitle }} </span>
+    <ng-template #elseBlock> Select Data </ng-template>
+  </mat-card-title>
+  <form #form="ngForm" (submit)="saved.emit(currentData)">
+    <mat-card-content>
+      <mat-form-field class="full-width">
+        <input
+          matInput
+          placeholder="Title"
+          [(ngModel)]="currentData.title"
+          type="text"
+          name="title"
+          required
+        />
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input
+          matInput
+          placeholder="Description"
+          [(ngModel)]="currentData.description"
+          type="text"
+          name="description"
+          required
+        />
+      </mat-form-field>
+    </mat-card-content>
+    <mat-card-actions>
+      <button
+        [disabled]="form.invalid"
+        type="submit"
+        mat-button
+        color="primary"
+      >
+        Save
+      </button>
+      <button type="button" mat-button (click)="form.reset(); cancelled.emit()">
+        Cancel
+      </button>
+    </mat-card-actions>
+  </form>
+</mat-card>

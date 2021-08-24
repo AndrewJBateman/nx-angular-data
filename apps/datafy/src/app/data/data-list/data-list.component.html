@@ -1,0 +1,27 @@
+<mat-card>
+  <mat-card-title class="text-center"> Data List </mat-card-title>
+  <mat-card-content>
+    <mat-list data-cy="datas-list">
+      <mat-list-item
+        *ngFor="let data of datas"
+        attr.data-cy="datas-{{ data.id }}-item"
+        class="mat-list-option"
+        (click)="selected.emit(data)"
+      >
+        <span matLine attr.data-cy="data-{{ data.id }}-item-title">{{
+          data.title
+        }}</span>
+        <button
+          *ngIf="!readonly"
+          attr.data-cy="delete-data-{{ data.id }}-btn"
+          mat-icon-button
+          type="button"
+          color="warn"
+          (click)="deleted.emit(data); $event.stopImmediatePropagation()"
+        >
+          <mat-icon>clear</mat-icon>
+        </button>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>

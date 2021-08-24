@@ -1,0 +1,18 @@
+<div class="component-container">
+  <div class="list-component">
+    <nx-angular-data-list
+      [datas]="datas"
+      (selected)="selectData($event)"
+      (deleted)="deleteData($event)"
+    >
+    </nx-angular-data-list>
+  </div>
+  <div class="details-component">
+    <nx-angular-data-details
+      [data]="selectedData"
+      (saved)="saveData($event)"
+      (cancelled)="resetDataDetails()"
+    >
+    </nx-angular-data-details>
+  </div>
+</div>
