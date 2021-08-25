@@ -14,6 +14,7 @@ import { HomeComponent } from './home/home.component';
 import { DataListComponent } from './data/data-list/data-list.component';
 import { DataDetailsComponent } from './data/data-details/data-details.component';
 import { FormsModule } from '@angular/forms';
+import { UiToolbarModule } from '@nx-angular-data/ui-toolbar';
 
 @NgModule({
   declarations: [AppComponent, DataComponent, HomeComponent, DataListComponent, DataDetailsComponent],
@@ -26,6 +27,7 @@ import { FormsModule } from '@angular/forms';
     CoreDataModule,
     CoreStateModule,
     AppRoutingModule,
+    UiToolbarModule,
     FormsModule
   ],
   providers: [],

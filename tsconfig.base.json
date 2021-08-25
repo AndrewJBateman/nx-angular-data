@@ -18,8 +18,9 @@
       "@nx-angular-data/api-interfaces": ["libs/api-interfaces/src/index.ts"],
       "@nx-angular-data/core-state": ["libs/core-state/src/index.ts"],
       "@nx-angular-data/core-data": ["libs/core-data/src/index.ts"],
-      "@nx-angular-data/material": ["libs/material/src/index.ts"]
+      "@nx-angular-data/material": ["libs/material/src/index.ts"],
+      "@nx-angular-data/ui-toolbar": ["libs/ui-toolbar/src/index.ts"]
     }
   },
-  "exclude": ["node_modules", "tmp"]
+  "exclude": ["tmp"]
 }
