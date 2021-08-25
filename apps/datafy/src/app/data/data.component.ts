@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Data } from '@nx-angular-data/api-interfaces';
+import { DataService } from '@nx-angular-data/core-data';
+import { Observable } from 'rxjs';
 
 const mockDatas: Data[] = [
   {
@@ -37,11 +39,13 @@ const emptyData: Data = {
 })
 export class DataComponent implements OnInit {
   datas: Data[];
+  datas$: Observable<Data[]>;
   selectedData: Data;
 
-  constructor() {}
+  constructor(private dataService: DataService) {}
 
   ngOnInit(): void {
+    this.datas$ = this.dataService.all();
     this.datas = mockDatas;
     this.selectedData = emptyData;
   }

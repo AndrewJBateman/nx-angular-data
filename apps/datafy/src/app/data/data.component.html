@@ -1,7 +1,7 @@
 <div class="component-container">
   <div class="list-component">
     <nx-angular-data-list
-      [datas]="datas"
+      [datas]="datas$ | async"
       (selected)="selectData($event)"
       (deleted)="deleteData($event)"
     >
