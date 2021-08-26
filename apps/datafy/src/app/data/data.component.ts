@@ -3,29 +3,6 @@ import { Data } from '@nx-angular-data/api-interfaces';
 import { DataService } from '@nx-angular-data/core-data';
 import { Observable } from 'rxjs';
 
-const mockDatas: Data[] = [
-  {
-    id: '1',
-    title: 'DMDINTA',
-    description: 'DEMAND INTERVAL FLAG A',
-  },
-  {
-    id: '2',
-    title: 'TLCPLOT',
-    description: 'TC ENERGY PLOT POINT',
-  },
-  {
-    id: '3',
-    title: '42PH002',
-    description: 'PH AGUA SERVICO P/CEMAP',
-  },
-  {
-    id: '4',
-    title: '170FI28',
-    description: 'GN PARA COP599',
-  },
-];
-
 const emptyData: Data = {
   id: null,
   title: '',
@@ -46,7 +23,6 @@ export class DataComponent implements OnInit {
 
   ngOnInit(): void {
     this.datas$ = this.dataService.all();
-    this.datas = mockDatas;
     this.selectedData = emptyData;
   }
 
@@ -55,7 +31,9 @@ export class DataComponent implements OnInit {
   }
 
   deleteData(data: Data) {
-    this.datas = this.datas.filter((d) => data.id !== d.id);
+    this.dataService
+      .delete(data)
+      .subscribe((res) => (this.datas$ = this.dataService.all()));
     this.selectedData = emptyData;
   }
 
@@ -68,19 +46,16 @@ export class DataComponent implements OnInit {
   }
 
   updateData(data: Data) {
-    this.datas = this.datas.map((d) => {
-      return data.id === d.id ? data : d;
-    });
+    this.dataService
+      .update(data)
+      .subscribe((res) => (this.datas$ = this.dataService.all()));
     this.resetDataDetails();
   }
 
   createData(data: Data) {
-    const newData = {
-      id: this.getRandomID(),
-      title: data.title,
-      description: data.description,
-    };
-    this.datas = [...this.datas, newData];
+    this.dataService
+      .create(data)
+      .subscribe((res) => (this.datas$ = this.dataService.all()));
     this.resetDataDetails();
   }
 

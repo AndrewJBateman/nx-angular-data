@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 
 import { Data } from '@nx-angular-data/api-interfaces';
 
-const ENDPOINT = 'http://localhost:3000/datas'
+const ENDPOINT = 'http://localhost:3333/api/datas'
 
 @Injectable({
   providedIn: 'root'
